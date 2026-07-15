@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corrigibility Research Fund</title>
+<meta name="description" content="The Corrigibility Research Fund awards grants and prizes for research on AI corrigibility. A program of Lightcone Infrastructure, managed by Max Harms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FCFCFA;
+    --ink: #1C1B18;
+    --ink-soft: #57554E;
+    --pen-red: #BE3A2C;
+    --rule: #E3E1DA;
+    --measure: 41rem;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { font-size: 17px; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Spectral", Georgia, serif;
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 3rem;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 3.5rem;
+  }
+  .masthead .org { color: var(--ink); font-weight: 500; }
+
+  /* ---------- headline with correction ---------- */
+  h1 {
+    font-weight: 300;
+    font-size: clamp(1.9rem, 4.6vw, 2.7rem);
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    max-width: 36rem;
+  }
+
+  h1 del {
+    text-decoration: none;
+    position: relative;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  h1 del::after {
+    content: "";
+    position: absolute;
+    left: -1%; right: 101%;
+    top: 54%;
+    height: 2px;
+    background: var(--pen-red);
+    transform: rotate(-1.1deg);
+    animation: strike 0.5s ease-out 0.5s forwards;
+  }
+
+  h1 ins {
+    text-decoration: none;
+    color: var(--pen-red);
+    font-style: italic;
+    font-weight: 500;
+    opacity: 0;
+    animation: appear 0.5s ease-out 1.1s forwards;
+  }
+
+  @keyframes strike { to { right: -1%; } }
+  @keyframes appear { to { opacity: 1; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    h1 del::after { animation: none; right: -1%; }
+    h1 ins { animation: none; opacity: 1; }
+  }
+
+  /* ---------- body ---------- */
+  .lede {
+    margin-top: 2rem;
+    font-size: 1.12rem;
+    max-width: 36rem;
+  }
+
+  p + p { margin-top: 1rem; }
+
+  a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--pen-red);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+  }
+  a:hover { color: var(--pen-red); }
+  a:focus-visible {
+    outline: 2px solid var(--pen-red);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  /* ---------- facts table ---------- */
+  .facts {
+    margin: 3rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .facts dl {
+    display: grid;
+    grid-template-columns: minmax(11rem, 14rem) 1fr;
+  }
+  .facts dt, .facts dd {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .facts dt {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-top: 1.05rem;
+  }
+  .facts dd { font-size: 0.98rem; }
+  .facts dd .note { color: var(--ink-soft); }
+
+  @media (max-width: 540px) {
+    .facts dl { grid-template-columns: 1fr; }
+    .facts dt { border-bottom: none; padding-bottom: 0; }
+    .facts dd { padding-top: 0.25rem; }
+  }
+
+  /* ---------- actions ---------- */
+  .actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 2.5rem 0 3.5rem;
+  }
+  .actions a {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    padding: 0.7rem 1.1rem;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .actions a.primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .actions a:hover { background: var(--pen-red); border-color: var(--pen-red); color: var(--paper); }
+
+  /* ---------- definition ---------- */
+  .definition {
+    border-left: 2px solid var(--pen-red);
+    padding-left: 1.25rem;
+    max-width: 34rem;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+  .definition .term {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <span class="org">Corrigibility Research Fund</span>
+    <span>A program of Lightcone Infrastructure</span>
+  </header>
+
+  <main>
+    <h1>Funding research on AI systems that help us <del>get&nbsp;everything right the first&nbsp;time</del> <ins>notice and correct our&nbsp;mistakes</ins>.</h1>
+
+    <p class="lede">The Corrigibility Research Fund awards grants and prizes for research that advances our understanding of AI corrigibility — from pure theory to empirical work on real systems. The fund will award at least $200,000 in 2026, with the goal of impacting the AIs that actually get built.</p>
+
+    <div class="facts">
+      <dl>
+        <dt>Grant applications</dt>
+        <dd>Round 1 due <strong>August 23, 2026</strong> · Round 2 due <strong>October 31, 2026</strong></dd>
+
+        <dt>Typical grant</dt>
+        <dd>$5k–$35k <span class="note">— time for a focused project, a research sabbatical, compute for a mid-sized training run</span></dd>
+
+        <dt>Prizes</dt>
+        <dd>Retroactive awards for excellent corrigibility work done in 2026. No application needed. ~$40k announced end of September, $60k+ in mid-December.</dd>
+
+        <dt>Apply or nominate</dt>
+        <dd><a href="mailto:grants@corrigibilityresearch.org">grants@corrigibilityresearch.org</a> <span class="note">— a short email is enough; if it takes more than a few hours to write, something has probably gone wrong</span></dd>
+
+        <dt>Fund manager</dt>
+        <dd>Max Harms <span class="note">(author of <a href="https://www.lesswrong.com/s/KfCjeconYRdFbMxsy">CAST: Corrigibility as Singular Target</a>)</span></dd>
+      </dl>
+    </div>
+
+    <div class="actions">
+      <a class="primary" href="https://www.lesswrong.com/posts/FBqe5dt8ZjaHN4Xj9/announcing-the-corrigibility-research-fund">Read the full announcement →</a>
+      <a href="mailto:grants@corrigibilityresearch.org">Email the fund</a>
+    </div>
+
+    <aside class="definition">
+      <span class="term">Corrigibility, n.</span>
+      The property of an AI system that keeps its human principals informed and in control — one that helps us notice and fix our mistakes, including mistakes we made in building it. A corrigible AI converts a single catastrophic failure mode into an iterative process with room for error.
+    </aside>
+  </main>
+
+  <footer>
+    The Corrigibility Research Fund is a program of Lightcone Infrastructure Inc., a 501(c)(3) nonprofit. All disbursements are grants made by Lightcone, which retains final approval of every grant and prize. Grants must serve charitable purposes; no funds may be used for lobbying, political campaign activity, or private benefit.
+  </footer>
+
+</div>
+</body>
+</html>
